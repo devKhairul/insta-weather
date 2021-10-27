@@ -2,10 +2,7 @@
 // Accuweather API Key
 const key = '1H8Di0YCQ6IEuloAcxSIWQfQHjvc0gTQ';
 
-
-
 // Get City Information
-
 const getCity = async (city) => {
 
     const base = 'http://dataservice.accuweather.com/locations/v1/cities/search';
@@ -18,7 +15,6 @@ const getCity = async (city) => {
 }
 
 // Get Weather Information
-
 const getWeather = async(id) => {
     const base = 'http://dataservice.accuweather.com/currentconditions/v1/';
     const query = `${id}?apikey=${key}`;
@@ -27,14 +23,4 @@ const getWeather = async(id) => {
     const data = await response.json();
 
     return data[0];
-
 }
-
-getCity('Mississauga')
-    .then(data => {
-       return getWeather(data.Key)
-        .then(data => {
-            console.log(data);
-        });
-    })
-    .catch(error => console.log(error));
